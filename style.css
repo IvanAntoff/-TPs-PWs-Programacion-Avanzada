@@ -1,0 +1,39 @@
+body {
+    background-image: url("imgs/bg.jpg");
+    background-color: rgb(21, 30, 51);
+    background-size: cover;
+}
+
+h1 {
+    margin-left: 40%;
+    color: azure;
+}
+
+.grid-container {
+    display: inline-grid;
+    margin-left: 30%;
+    margin-right: 30%;
+    grid-template-columns: auto auto auto;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 15px;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    height: 2em;
+    width: 4em;
+    font-size: 30px;
+    text-align: center;
+}
+
+.grid-item:hover {
+    background-color: rgba(0, 38, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    height: 2em;
+    width: 4em;
+    font-size: 30px;
+    text-align: center;
+}
