@@ -93,3 +93,27 @@ function colorFondoBlanco() {
 }
 
 separador();
+
+var nombres = new Array();
+
+nombres[0] = 'Nacho';
+nombres[1] = 'Arek';
+nombres[2] = 'Laura';
+nombres[3] = 'Sonia';
+nombres[4] = 'Gonzalo';
+nombres[5] = 'Eva';
+nombres[6] = 'Pedro';
+
+i = 0;
+
+function imprimirArray() {
+    for (i = 0; i <= 8; i++) {
+        if ((nombres[i]) != ('undefined')) {
+            document.write(nombres[i] + "<br>");
+        } else {
+            alert('El alumno n°: ' + +i + +' no esta registrado.');
+        }
+    }
+}
+
+separador();

@@ -2,22 +2,24 @@
 
 <head>
     <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet" type="text/css">
     <title>
         TP1: Antoff Ivan - Nuñez Matias
     </title>
 </head>
 
 <body>
-
+    <button style="margin-left: 3px; margin-top: 3px; height: 2em; width: 4em;" onclick="location.href = '../index.html';">
+    Inicio
+    </button>
     <script src="TP1.js">
     </script>
-    <div style="margin-left: 30%; margin-top: 10%;">
+    <div style="margin-left: 30%; margin-top: 0%;">
         <button style="background-color: red; height: 3em;width: 4em;font-size: 3em;" onclick="colorFondoRojo();">
             Fondo rojo!
         </button>
         <button style="background-color: green; height: 3em;width: 4em;font-size: 3em;" onclick="colorFondoVerde();">
             Fondo Verde!
-        </button>
         <button style="background-color: blue; height: 3em;width: 4em;font-size: 3em;" onclick="colorFondoAzul();">
             Fondo Azul!
         </button>
@@ -26,6 +28,19 @@
                 Resetear!
             </button>
         </p>
+    </div>
+    <div style="background-color: rgba(255, 251, 0, 0.568)">
+        <p style="text-align: center; font-size: 2em;">
+            El siguiente boton ejecuta la funcion imprimir array la cual, en teoria, imprime un array
+        </p>
+        <p style="text-align: center; font-size: 2em;">
+            con nombres y si el indice a imprimir esta vacio, lanza una alerta.
+        </p>
+    </div>
+    <div style="margin-left: 30%;">
+        <button style=" background-color: gray; height: 3em;width: 12em;font-size: 3em; " onclick="imprimirArray(); ">
+            Imprimir array!
+        </button>
     </div>
 
 </body>
