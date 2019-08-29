@@ -135,5 +135,3 @@ function leerAlumno() {
     }
     document.getElementById("respuesta").innerHTML = mensaje;
 }
-
-separador();
