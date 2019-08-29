@@ -107,7 +107,7 @@ nombres[6] = 'Pedro';
 i = 0;
 
 function buscarAlumno(buscado, resultado) {
-    for (i = 0; i <= nombress.length; i++) {
+    for (i = 0; i <= nombres.length; i++) {
         if ((nombres[i]) == (buscado)) {
             resultado = true;
         }
@@ -116,17 +116,21 @@ function buscarAlumno(buscado, resultado) {
 
 function leerAlumno() {
 
-var mensaje;
-var buscado = prompt("Introduzca el alumno a buscar:", "Arek");
+    var mensaje;
+    var buscado = prompt("Introduzca el alumno a buscar:", "Arek");
 
 
-if (buscado == null || buscado == "") {
-        mensaje = "Has cancelado o introducido el nombre vacío";
-        } else if (resultado == true) {
-            buscarAlumno(buscado, resultado) 
-            mensaje = (`El alumno${buscado}NO esta registrado`)
-            } else {
-                mensaje = (`El alumno${buscado}NO esta registrado`)
-            }
-        }
+    if (buscado != null || buscado != "") {
+        buscarAlumno(buscado, resultado)     
+        } else {
+            mensaje = "Has cancelado o introducido el nombre vacío";
+        } 
+    if (resultado == true) {
+        mensaje = (`El alumno${buscado}NO esta registrado`)
+    } else {
+        mensaje = (`El alumno${buscado}NO esta registrado`)
+    }
+    document.getElementById("respuesta").innerHTML = mensaje;
+}
+    
 separador();
