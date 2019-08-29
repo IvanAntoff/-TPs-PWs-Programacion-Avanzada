@@ -106,14 +106,27 @@ nombres[6] = 'Pedro';
 
 i = 0;
 
-function imprimirArray() {
-    for (i = 0; i <= 8; i++) {
-        if ((nombres[i]) != ('undefined')) {
-            document.write(nombres[i] + "<br>");
-        } else {
-            alert('El alumno n°: ' + +i + +' no esta registrado.');
+function buscarAlumno(buscado, resultado) {
+    for (i = 0; i <= nombress.length; i++) {
+        if ((nombres[i]) == (buscado)) {
+            resultado = true;
         }
     }
 }
 
+function leerAlumno() {
+
+var mensaje;
+var buscado = prompt("Introduzca el alumno a buscar:", "Arek");
+
+
+if (buscado == null || buscado == "") {
+        mensaje = "Has cancelado o introducido el nombre vacío";
+        } else if (resultado == true) {
+            buscarAlumno(buscado, resultado) 
+            mensaje = (`El alumno${buscado}NO esta registrado`)
+            } else {
+                mensaje = (`El alumno${buscado}NO esta registrado`)
+            }
+        }
 separador();
