@@ -14,13 +14,25 @@ const API_URL = 'https://swapi.co/api' // Declara las constantes coon mayuscula 
 const PEOPLE_URL = '/people/'
 var id = String
 
-const lukeUrl = `${API_URL}${PEOPLE_URL}${id = "1"}` //el backtip es ctrl + alt "]}`"
-
-$.get(lukeUrl, function(luke) {
-    console.log(`"Hola Soy", ${luke.name}`)
-})
+//const lukeUrl = `${API_URL}${PEOPLE_URL}${id = "1"}` //el backtip es ctrl + alt "]}`"
+//
+//$.get(lukeUrl, function(luke) {
+//    console.log(`"Hola Soy", ${luke.name}`)
+//})
 
 // los callbacks son funciones, que se va a pasar por parametro
 // se va a ejecutar una vez que termine la respuesta
 
 // de la api listar: poner 1,2,3,4,5 y al hacer refresh tienen que mostrarse ordenandos.
+
+function listarPersonajes() {
+    for (id = 1; id <= 5; id++) {
+        lukeUrl = `${API_URL}${PEOPLE_URL}${id}`
+        $.get(lukeUrl, function(luke) {
+            console.log(`"Hola Soy", ${luke.name}`)
+        })
+    }
+}
+
+listarPersonajes(); //Nunca llega ordenada, para que llegue ordenada debemos concatenar funciones.
+//Esto se resuelve con el uso de prototipos.
