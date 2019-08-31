@@ -1,0 +1,11 @@
+{
+  "name": "api-clima",
+  "version": "1.0.0",
+  "description": "Esto es una app para consumir datos de geo referencia",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antoff Ivan",
+  "license": "GPL-3.0"
+}
