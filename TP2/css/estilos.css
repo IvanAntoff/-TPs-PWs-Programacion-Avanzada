@@ -1,0 +1,83 @@
+body {
+    background: url(../Img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.imagenes .legolas {
+    float: right;
+}
+
+.imagenes .orco {
+    float: left;
+}
+
+.imagenes .legolas button {
+    position: relative;
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background: white;
+    color: black;
+    margin: 0 0 30px;
+    font-family: Ubuntu;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.imagenes .orco input[type="button"] {
+    position: relative;
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background: white;
+    color: black;
+    margin: 0 0 30px;
+    font-family: Ubuntu;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.imagenes .legolas input[type="button"] {
+    position: relative;
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background: white;
+    color: black;
+    margin: 0 0 30px;
+    font-family: Ubuntu;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.imagenes .legolas #Vida1 {
+    background: green;
+    height: 30px;
+    border: none;
+}
+
+.imagenes .legolas #Magia1 {
+    background: #800080;
+    height: 30px;
+    border: none;
+}
+
+.imagenes .orco #Vida2 {
+    background: green;
+    height: 30px;
+    border: none;
+}
+
+.imagenes .orco #Magia2 {
+    background: #800080;
+    height: 30px;
+    border: none;
+}

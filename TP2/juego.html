@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <title>Juego</title>
+</head>
+
+<body>
+    <div class="imagenes">
+        <div class="legolas">
+            <img src="../Img/legolas.jpg" alt="" height="208px" width="360px">
+            <input type="button" id="tirarflecha" value="Tirar Flecha" onclick="TirarFlecha(Legolas,Orco)">
+            <input type="button" id="curarLegolas" value="Curarse" onclick="CurarseVida(Legolas)">
+            <input type="button" id="curarene" value="Curar al enemigo" onclick="CurarEnemigo(Legolas,Orco)">
+            <input type="button" id="RegenerarMagia" value="Regenerar Magia" onclick="regenerarse(Legolas)">
+            <input id="Vida1" name="vida1" value="    VIDA">
+            <input id="Magia1" name="magia1" value=" MAGIA ">
+        </div>
+
+        <div class="orco ">
+            <img src="../Img/orco.png " id="orcoVivo" alt=" " height="208px " width="360px ">
+            <input type="button" id="ataca2" value="Atacar con Espada" onclick="TirarFlecha(Orco,Legolas)">
+            <input type="button" id="curarme2" value="Curarse" onclick="CurarseVida(Orco)">
+            <input type="button" id="curarene2" value="Curar al enemigo" onclick="CurarEnemigo(Orco,Legolas)">
+            <input type="button" id="RegenerarMagia2" value="Regenerar Magia" onclick="regenerarse(Orco)">
+            <input id="Vida2" name="vida2" value="" readonly>
+            <input id="Magia2" name="magia2" value=" MAGIA " readonly>
+        </div>
+    </div>
+
+
+    <script language="javascript">
+        function jugador(nombre) {
+            this.nombre = nombre;
+            this.pv = 100;
+            this.sp = 100;
+        }
+
+
+        var Orco = new jugador("Orco");
+        var Legolas = new jugador("Legolas");
+
+
+        function TirarFlecha(jugador1, jugador2) {
+
+            if (jugador1.nombre == "Legolas") {
+                document.getElementById("tirarflecha").disabled = false;
+                var num = Math.floor(Math.random() * ((10) - 5) + 5);
+                var magia = (jugador1.sp - 10);
+                jugador1.sp = magia;
+                console.log(`Gastaste 10  puntos de magia, `);
+
+                var vida = (jugador2.pv - num);
+                jugador2.pv = (vida);
+                document.getElementById("Vida2").value = "VIDA      " + MostrarVida(jugador2);
+                document.getElementById("Magia1").value = "MAGIA    " + MostrarSp(jugador1);
+                console.log(`Causaste ${num} $puntos de daño`)
+                console.log("te quedan " + jugador1.pv + " de vida")
+                console.log("te quedan " + jugador1.sp + " de magia")
+
+                console.log("====================================");
+
+                if (jugador2.pv <= 0) {
+                    jugador2.pv = 0;
+
+                    alert(" Legolas Gano la batalla");
+
+                    alert("VOLVER A JUGAR");
+
+                    document.getElementById("Vida2").value = 0;
+                    location.reload();
+                }
+
+                if (jugador1.sp <= 0) {
+                    alert("Te quedaste sin sp, debes regenerarte");
+                    document.getElementById("tirarflecha").disabled = true;
+                    document.getElementById("curarLegolas").disabled = true;
+                    document.getElementById("curarene").disabled = true;
+
+
+                } else if (jugador1.sp > 0) {
+
+                    document.getElementById("tirarflecha").disabled = false;
+                    document.getElementById("curarLegolas").disabled = false;
+                    document.getElementById("curarene").disabled = false;
+
+
+                }
+
+
+
+            } else if (jugador1.nombre == "Orco") {
+                document.getElementById("ataca2").disabled = false;
+                var num = Math.floor(Math.random() * ((10) - 5) + 5);
+                var magia = (jugador1.sp - 10);
+                jugador1.sp = magia;
+                console.log(`Gastaste 10  puntos de magia, `);
+
+                var vida = (jugador2.pv - num);
+                jugador2.pv = (vida);
+                document.getElementById("Vida1").value = "VIDA      " + MostrarVida(jugador2);
+                document.getElementById("Magia2").value = "MAGIA    " + MostrarSp(jugador1);
+                console.log(`Causaste ${num} $puntos de daño`)
+                console.log("te quedan " + jugador1.pv + " de vida")
+                console.log("te quedan " + jugador1.sp + " de magia")
+
+                console.log("====================================");
+
+                if (jugador2.pv <= 0) {
+                    jugador2.pv = 0;
+                    alert(" Orco Gano la batalla");
+                    document.getElementById("Vida1").value = 0;
+                    location.reload();
+
+
+                }
+                if (jugador1.sp <= 0) {
+                    alert("Te quedaste sin sp, debes regenerarte");
+                    document.getElementById("ataca2").disabled = true;
+                    document.getElementById("curarme2").disabled = true;
+                    document.getElementById("curarene2").disabled = true;
+
+
+                } else if (jugador1.sp > 0) {
+
+                    document.getElementById("ataca2").disabled = false;
+                    document.getElementById("curarme2").disabled = false;
+                    document.getElementById("curarene2").disabled = false;
+
+
+                }
+
+            }
+        }
+
+
+
+
+        function regenerarse(jugador) {
+            if (jugador.nombre == "Legolas") {
+                document.getElementById("tirarflecha").disabled = false;
+                document.getElementById("curarLegolas").disabled = false;
+                document.getElementById("curarene").disabled = false;
+                var magia = (jugador.sp + 10);
+                jugador.sp = magia;
+                console.log("Recuperaste 10 puntos de Magia");
+                console.log("Te quedan " + jugador.sp + " puntos de Magia");
+                console.log("================================");
+                document.getElementById("Magia1").value = ("MAGIA    " + MostrarSp(jugador));
+
+
+            } else if (jugador.nombre == "Orco") {
+                document.getElementById("ataca2").disabled = false;
+                document.getElementById("curarme2").disabled = false;
+                document.getElementById("curarene2").disabled = false;
+                var magia = (jugador.sp + 10);
+                jugador.sp = magia;
+                console.log("Recuperaste 10 puntos de Magia");
+                console.log("Te quedan " + jugador.sp + " puntos de Magia");
+                console.log("================================");
+                document.getElementById("Magia2").value = ("MAGIA    " + MostrarSp(jugador));
+            }
+        }
+
+        function CurarseVida(jugador) {
+            if (jugador.nombre == "Legolas") {
+
+
+
+                var vida = (jugador.pv + 10);
+                var magia = (jugador.sp - 10);
+                jugador.sp = magia;
+                jugador.pv = vida;
+                document.getElementById("Vida1").value = ("VIDA  " + MostrarVida(jugador));
+
+                console.log("Te generaste  10 puntos de vida");
+                console.log("Ahora posees " + jugador.pv + " puntos de vida");
+                console.log("Ahora posees " + jugador.sp + " puntos de magia");
+                console.log("================================================")
+                document.getElementById("Magia1").value = ("MAGIA  " + MostrarSp(jugador));
+
+                if (jugador.sp <= 0) {
+                    alert("Te quedaste sin sp, debes regenerarte");
+                    document.getElementById("curarLegolas").disabled = true;
+                    document.getElementById("tirarflecha").disabled = true;
+
+                    document.getElementById("curarene").disabled = true;
+
+                } else if (jugador.sp > 0) {
+
+
+                    document.getElementById("tirarflecha").disabled = false;
+                    document.getElementById("curarLegolas").disabled = false;
+                    document.getElementById("curarene").disabled = false;
+
+                }
+
+
+            } else if (jugador.nombre == "Orco") {
+
+                var vida = (jugador.pv + 10);
+                var magia = (jugador.sp - 10);
+                jugador.sp = magia;
+                jugador.pv = vida;
+                document.getElementById("Vida2").value = ("VIDA  " + MostrarVida(jugador));
+
+                console.log("Te generaste  10 puntos de vida");
+                console.log("Ahora posees " + jugador.pv + " puntos de vida");
+                console.log("Ahora posees " + jugador.sp + " puntos de magia");
+                console.log("================================================")
+                document.getElementById("Magia2").value = ("MAGIA  " + MostrarSp(jugador));
+                if (jugador.sp <= 0) {
+                    alert("Te quedaste sin sp, debes regenerarte");
+                    document.getElementById("ataca2").disabled = true;
+                    document.getElementById("curarme2").disabled = true;
+                    document.getElementById("curarene2").disabled = true;
+
+
+                } else if (jugador.sp > 0) {
+
+                    document.getElementById("ataca2").disabled = false;
+                    document.getElementById("curarme2").disabled = false;
+                    document.getElementById("curarene2").disabled = false;
+
+                }
+
+            }
+
+        }
+
+        function CurarEnemigo(jugador1, jugador2) {
+            if (jugador1.nombre == "Legolas") {
+
+                var vida = (jugador2.pv + 10);
+                var magia = (jugador1.sp - 10);
+                jugador1.sp = magia;
+                jugador2.pv = vida;
+                document.getElementById("Vida2").value = ("VIDA  " + MostrarVida(jugador2));
+                document.getElementById("Magia1").value = ("MAGIA  " + MostrarSp(jugador1));
+
+                console.log("Le generaste a tu enemigo  10 puntos de vida");
+
+
+                console.log("Ahora posees " + jugador1.sp + " puntos de magia");
+                console.log("================================================")
+                if (jugador1.sp <= 0) {
+                    alert("Te quedaste sin sp, debes regenerarte");
+                    document.getElementById("tirarflecha").disabled = true;
+
+                    document.getElementById("curarLegolas").disabled = true;
+                    document.getElementById("curarene").disabled = true;
+
+                } else if (jugador1.sp > 0) {
+
+                    document.getElementById("curarene").disabled = false;
+                    document.getElementById("curarLegolas").disabled = false;
+                    document.getElementById("curarene").disabled = false;
+
+                }
+
+            } else if (jugador1.nombre == "Orco") {
+                document.getElementById("curarene2").disabled = false;
+                var vida = (jugador2.pv + 10);
+                var magia = (jugador1.sp - 10);
+                jugador1.sp = magia;
+                jugador2.pv = vida;
+                document.getElementById("Vida1").value = ("VIDA  " + MostrarVida(jugador2));
+                document.getElementById("Magia2").value = ("MAGIA  " + MostrarSp(jugador1));
+                console.log("Le generaste a tu enemigo  10 puntos de vida");
+
+                console.log("Ahora posees " + jugador1.sp + " puntos de magia");
+                console.log("================================================")
+                if (jugador1.sp <= 0) {
+                    alert("Te quedaste sin sp, debes regenerarte");
+                    document.getElementById("ataca2").disabled = true;
+                    document.getElementById("curarene2").disabled = true;
+                    document.getElementById("curarme2").disabled = true;
+
+
+                } else if (jugador1.sp > 0) {
+                    document.getElementById("ataca2").disabled = false;
+                    document.getElementById("curarene2").disabled = false;
+                    document.getElementById("curarme2").disabled = false;
+                }
+            }
+        }
+
+
+        function MostrarVida(jugador) {
+            return (jugador.pv);
+
+        }
+
+        function MostrarSp(jugador) {
+            return (jugador.sp);
+        }
+
+
+        // Seteando valores en el formulario
+
+        document.getElementById("Vida1").value = "VIDA      " + MostrarVida(Legolas);
+        document.getElementById("Magia1").value = "MAGIA    " + MostrarSp(Legolas);
+        document.getElementById("Magia2").value = "MAGIA    " + MostrarSp(Orco);
+        document.getElementById("Vida2").value = "VIDA   " + MostrarVida(Orco);
+    </script>
+</body>
+
+</html>
